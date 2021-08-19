@@ -23,13 +23,13 @@ export default {
 }
 
 enum Days {
+	Sunday,
 	Monday,
 	Tuesday,
 	Wednseday,
 	Thursday,
 	Friday,
-	Saturday,
-	Sunday,
+	Saturday
 }
 
 enum Month {
