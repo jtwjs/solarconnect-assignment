@@ -35,8 +35,8 @@ const CheckCircle = styled.div<{ done: boolean }>`
   margin-right: 20px;
   cursor: pointer;
   ${(props) =>
-	props.done &&
-	css`
+  props.done &&
+  css`
       border: 1px solid #dddddd;
       color: #dddddd;
     `}
@@ -47,36 +47,36 @@ const Text = styled.div<{ done: boolean }>`
   font-size: 16px;
   color: #119955;
   ${(props) =>
-	props.done &&
-	css`
+  props.done &&
+  css`
       color: #ced4da;
       text-decoration: line-through;
     `}
 `;
 
 interface TodoItemProps {
-	toggleTodo: (id: number) => void;
-	removeTodo: (id: number) => void;
-	todo: Itodo;
+  toggleTodo: (id: number) => void;
+  removeTodo: (id: number) => void;
+  todo: Itodo;
 }
 
 const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
-	const done = false;
-	const handleToggle = () => {};
+  const done = false;
+  const handleToggle = () => {};
 
-	const handleRemove = () => {};
+  const handleRemove = () => {};
 
-	return (
-		<TodoItemBlock>
-			<CheckCircle done={done} onClick={handleToggle}>
-				{done && <CheckOutlined />}
-			</CheckCircle>
-			<Text done={done}>{todo.text}</Text>
-			<Remove onClick={handleRemove}>
-				<DeleteOutlined />
-			</Remove>
-		</TodoItemBlock>
-	);
+  return (
+    <TodoItemBlock>
+      <CheckCircle done={done} onClick={handleToggle}>
+        {done && <CheckOutlined />}
+      </CheckCircle>
+      <Text done={done}>{todo.text}</Text>
+      <Remove onClick={handleRemove}>
+        <DeleteOutlined />
+      </Remove>
+    </TodoItemBlock>
+  );
 };
 
 export default React.memo(TodoItem);

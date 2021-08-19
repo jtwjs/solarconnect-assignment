@@ -22,7 +22,7 @@ const TodoTemplateBlock = styled.div`
 `;
 
 function TodoTemplate(props: any) {
-	return <TodoTemplateBlock>{props.children}</TodoTemplateBlock>;
+  return <TodoTemplateBlock>{props.children}</TodoTemplateBlock>;
 }
 
 export default React.memo(TodoTemplate);

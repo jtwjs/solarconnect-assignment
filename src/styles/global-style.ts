@@ -2,11 +2,11 @@ import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
-	${reset}
-	
-	body {
-		background: #eee;
-	}
+  ${reset}
+  
+  body {
+    background: #eee;
+  }
 
   .a11y {
     position: absolute;
@@ -19,4 +19,4 @@ export const GlobalStyle = createGlobalStyle`
     white-space: nowrap;
     border: 0;
   }
-	`;
+  `;

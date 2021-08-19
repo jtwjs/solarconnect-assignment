@@ -4,11 +4,11 @@ import styled from "styled-components";
 import TodoTimer from 'components/todo/template/timer/TodoTimer';
 
 const TodoHead = () => {
-	return (
-		<TodoHeadBlock>
-			<TodoTimer />
-		</TodoHeadBlock>
-	);
+  return (
+    <TodoHeadBlock>
+      <TodoTimer/>
+    </TodoHeadBlock>
+  );
 };
 
 export default React.memo(TodoHead);

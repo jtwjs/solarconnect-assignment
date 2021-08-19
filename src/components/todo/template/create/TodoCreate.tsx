@@ -50,55 +50,55 @@ const Input = styled.input`
 `;
 
 interface TodoCreateProps {
-	nextId: number;
-	createTodo: (todo: Itodo) => void;
-	incrementNextId: () => void;
+  nextId: number;
+  createTodo: (todo: Itodo) => void;
+  incrementNextId: () => void;
 }
 
 const TodoCreate = ({
-	                    nextId,
-	                    createTodo,
-	                    incrementNextId
+                      nextId,
+                      createTodo,
+                      incrementNextId
                     }: TodoCreateProps) => {
-	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState("");
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
-	const handleToggle = () => setOpen(!open);
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-		setValue(e.target.value);
+  const handleToggle = () => setOpen(!open);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setValue(e.target.value);
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault(); // 새로고침 방지
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // 새로고침 방지
 
-		createTodo({
-			id: nextId,
-			text: value,
-			done: false
-		});
-		incrementNextId(); // nextId 하나 증가
+    createTodo({
+      id: nextId,
+      text: value,
+      done: false
+    });
+    incrementNextId(); // nextId 하나 증가
 
-		setValue(""); // input 초기화
-		setOpen(false); // open 닫기
-	};
+    setValue(""); // input 초기화
+    setOpen(false); // open 닫기
+  };
 
-	return (
-		<>
-			<InsertFormPositioner>
-				<InsertForm onSubmit={handleSubmit}>
-					<Input
-						autoFocus
-						placeholder="What's need to be done?"
-						onChange={handleChange}
-						value={value}
-					/>
+  return (
+    <>
+      <InsertFormPositioner>
+        <InsertForm onSubmit={handleSubmit}>
+          <Input
+            autoFocus
+            placeholder="What's need to be done?"
+            onChange={handleChange}
+            value={value}
+          />
 
-					<CircleButton onClick={handleToggle} open={open}>
-						<PlusCircleOutlined />
-					</CircleButton>
-				</InsertForm>
-			</InsertFormPositioner>
-		</>
-	);
+          <CircleButton onClick={handleToggle} open={open}>
+            <PlusCircleOutlined />
+          </CircleButton>
+        </InsertForm>
+      </InsertFormPositioner>
+    </>
+  );
 };
 
 export default React.memo(TodoCreate);

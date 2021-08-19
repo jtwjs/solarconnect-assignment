@@ -13,25 +13,25 @@ const TodoListBlock = styled.div`
 `;
 
 interface TodoListProps {
-	todos: Itodo[];
-	toggleTodo: (id: number) => void;
-	removeTodo: (id: number) => void;
+  todos: Itodo[];
+  toggleTodo: (id: number) => void;
+  removeTodo: (id: number) => void;
 }
 
 const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
-	return (
-		<TodoListBlock>
-			{todos &&
-			todos.map((todo) => (
-				<TodoItem
-					toggleTodo={toggleTodo}
-					removeTodo={removeTodo}
-					key={todo.id}
-					todo={todo}
-				/>
-			))}
-		</TodoListBlock>
-	);
+  return (
+    <TodoListBlock>
+      {todos &&
+      todos.map((todo) => (
+        <TodoItem
+          toggleTodo={toggleTodo}
+          removeTodo={removeTodo}
+          key={todo.id}
+          todo={todo}
+        />
+      ))}
+    </TodoListBlock>
+  );
 };
 
 export default React.memo(TodoList);
