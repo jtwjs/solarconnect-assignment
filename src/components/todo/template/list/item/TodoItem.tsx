@@ -3,6 +3,37 @@ import { Itodo } from "components/todo/TodoService";
 import React from "react";
 import styled, { css } from "styled-components";
 
+interface TodoItemProps {
+  toggleTodo: (id: number) => void;
+  removeTodo: (id: number) => void;
+  todo: Itodo;
+}
+
+const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
+  const {id, text, done} = todo;
+  const handleToggle = () => {
+    toggleTodo(id);
+  };
+
+  const handleRemove = () => {
+    removeTodo(id);
+  };
+
+  return (
+    <TodoItemBlock>
+      <CheckCircle done={done} onClick={handleToggle}>
+        {done && <CheckOutlined />}
+      </CheckCircle>
+      <Text done={done}>{text}</Text>
+      <Remove onClick={handleRemove}>
+        <DeleteOutlined />
+      </Remove>
+    </TodoItemBlock>
+  );
+};
+
+export default React.memo(TodoItem);
+
 const Remove = styled.div`
   display: flex;
   align-items: center;
@@ -10,7 +41,6 @@ const Remove = styled.div`
   color: #119955;
   font-size: 16px;
 `;
-
 const TodoItemBlock = styled.div`
   display: flex;
   align-items: center;
@@ -22,7 +52,6 @@ const TodoItemBlock = styled.div`
     }
   }
 `;
-
 const CheckCircle = styled.div<{ done: boolean }>`
   width: 20px;
   height: 20px;
@@ -41,7 +70,6 @@ const CheckCircle = styled.div<{ done: boolean }>`
       color: #dddddd;
     `}
 `;
-
 const Text = styled.div<{ done: boolean }>`
   flex: 1;
   font-size: 16px;
@@ -53,30 +81,3 @@ const Text = styled.div<{ done: boolean }>`
       text-decoration: line-through;
     `}
 `;
-
-interface TodoItemProps {
-  toggleTodo: (id: number) => void;
-  removeTodo: (id: number) => void;
-  todo: Itodo;
-}
-
-const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
-  const done = false;
-  const handleToggle = () => {};
-
-  const handleRemove = () => {};
-
-  return (
-    <TodoItemBlock>
-      <CheckCircle done={done} onClick={handleToggle}>
-        {done && <CheckOutlined />}
-      </CheckCircle>
-      <Text done={done}>{todo.text}</Text>
-      <Remove onClick={handleRemove}>
-        <DeleteOutlined />
-      </Remove>
-    </TodoItemBlock>
-  );
-};
-
-export default React.memo(TodoItem);
