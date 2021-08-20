@@ -1,6 +1,5 @@
 <h1 align="center">Todo-list / assignment #7</h1>
 
-<p align="center">Project Desccription 🔥</p>
 
 ## Built With
 <div>
@@ -9,6 +8,7 @@
   <img alt="styled-components" src ="https://img.shields.io/badge/styled_components-DB7093.svg?&style=for-the-badge&logo=styled-components&logoColor=white"/>
 </div>
 <div>
+  <img alt="Ant Design" src ="https://img.shields.io/badge/Ant Design-0170FE.svg?&style=for-the-badge&logo=Ant Design&logoColor=white"/>
   <img alt="HTML5" src ="https://img.shields.io/badge/HTML5-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/>
   <img alt="CSS3" src ="https://img.shields.io/badge/CSS3-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/>
   <img alt="IntelliJ IDEA" src ="https://img.shields.io/badge/IntelliJ IDEA-000000.svg?&style=for-the-badge&logo=IntelliJ IDEA&logoColor=white"/>
@@ -26,9 +26,9 @@
 ## Available Commands
 ```bash
 # install dependencies
-$ npm install
+$ yarn install
 # serve with hot reload at localhost:3000
-$ npm run start
+$ yarn start
 ```
 
 ##  📑 Project Plan
