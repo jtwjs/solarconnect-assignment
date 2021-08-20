@@ -7,10 +7,13 @@ declare module "styled-components" {
       secondary: string;
       black: string;
       white: string;
-      gray: string;
+      grayC: string;
+      grayD: string;
+      grayE: string;
     },
 	  boxShadow: {
-    	input: string
+    	input: string;
+    	section: string;
 	  }
   }
 }

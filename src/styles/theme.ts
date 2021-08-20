@@ -6,10 +6,14 @@ const theme: DefaultTheme = {
     secondary: "#33bb77",
     black: "#191A20",
     white: "#fff",
-    gray: "#ddd",
+	  grayC: "#ced4da",
+    grayD: "#ddd",
+	  grayE: "#eee",
+
   },
 	boxShadow: {
-  	input: "0 0 0 2px rgb(17 153 85 / 20%)"
+  	input: "0 0 0 2px rgb(17 153 85 / 20%)",
+		section: "0 0 50px 0 rgba(0, 0, 0, 0.1)",
 	}
 };
 
