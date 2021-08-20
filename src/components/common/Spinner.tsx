@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+
 import { Spin, Row, Col } from 'antd';
 import { SpinSize } from 'antd/lib/spin';
 
-import Loading from './Loading';
+import Loading from 'components/common/Loading';
 
 interface ISpinnerProps {
   tip?: string;
@@ -16,10 +17,6 @@ interface ISpinnerProps {
 interface IWrapperProp {
   readonly ['data-mask']: boolean;
 }
-
-const StyledSpinnerWrapper = styled(Row)<IWrapperProp>`
-  background-color: ${styleProps => (styleProps['data-mask'] ? 'rgba(0, 0, 0, 0.1)' : 'transparent')};
-`;
 
 function Spinner(props: ISpinnerProps): ReactElement {
   const { tip, size, delay, style, mask = false } = props;
@@ -42,3 +39,7 @@ Spinner.defaultProps = {
 };
 
 export default Spinner;
+
+const StyledSpinnerWrapper = styled(Row)<IWrapperProp>`
+  background-color: ${styleProps => (styleProps['data-mask'] ? 'rgba(0, 0, 0, 0.1)' : 'transparent')};
+`;
