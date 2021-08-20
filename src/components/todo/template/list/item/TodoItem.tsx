@@ -22,7 +22,12 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
 
   return (
     <TodoItemBlock>
-      <CheckCircle done={done} onClick={handleToggle}>
+      <CheckCircle
+	      type="button"
+	      done={done}
+	      onClick={handleToggle}
+	      aria-label="완료 버튼"
+      >
         {done && <CheckOutlined />}
       </CheckCircle>
       <Text done={done}>{text}</Text>
@@ -30,7 +35,10 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
         목표일:
         <TargetDate >{targetDate}</TargetDate>
       </TargetDateWrap>
-      <Remove onClick={handleRemove}>
+      <Remove
+	      type="button"
+	      onClick={handleRemove}
+      >
         <DeleteOutlined />
       </Remove>
     </TodoItemBlock>
@@ -39,14 +47,14 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
 
 export default React.memo(TodoItem);
 
-const Remove = styled.div`
+const Remove = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({theme}) => theme.color.primary};
   font-size: 16px;
 `;
-const TodoItemBlock = styled.div`
+const TodoItemBlock = styled.article`
   display: flex;
   align-items: center;
   padding-top: 12px;
@@ -57,29 +65,27 @@ const TodoItemBlock = styled.div`
     }
   }
 `;
-const CheckCircle = styled.div<{ done: boolean }>`
-  width: 20px;
-  height: 20px;
-  border-radius: 16px;
-  border: 1px solid ${({theme}) => theme.color.secondary};
-  font-size: 16px;
-  display: flex;
+const CheckCircle = styled.button<{ done: boolean }>`
+	display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
-  cursor: pointer;
+  width: 20px;
+  height: 20px;
+	margin-right: 20px;
+  border-radius: 16px;
+  border: 1px solid ${({theme}) => theme.color.secondary};
   ${(props) =>
   props.done &&
   css`
-      border: 1px solid ${({theme}) => theme.color.gray};
-      color: ${({theme}) => theme.color.gray};
+      border: 1px solid ${({theme}) => theme.color.grayD};
+      color: ${({theme}) => theme.color.grayD};
     `}
 `;
 const doneTextMixin = css`
-  color: #ced4da;
+  color: ${({theme}) => theme.color.grayC};
   text-decoration: line-through;
 `;
-const Text = styled.div<{ done: boolean }>`
+const Text = styled.h3<{ done: boolean }>`
   flex: 1;
   font-size: 16px;
   color: ${({theme}) => theme.color.primary};

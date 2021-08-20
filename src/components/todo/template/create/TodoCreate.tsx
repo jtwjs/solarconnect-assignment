@@ -71,6 +71,7 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
   return (
     <>
       <InsertFormPositioner>
+	      <h2 className="a11y">Todo 입력 폼</h2>
         <InsertForm onSubmit={handleSubmit}>
           <TargetDateWrap>
             <StyledLabel htmlFor="date-picker">완료 목표일: </StyledLabel>
@@ -79,6 +80,7 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
               ref={datePickerRef}
               value={dateValue}
               open={isOpenDataPicker}
+              inputReadOnly
               onFocus={openDatePicker}
               onBlur={closeDatePicker}
               onChange={handleDatePicker}
@@ -106,25 +108,13 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
 
 export default React.memo(TodoCreate);
 
-const CircleButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 60px;
-  color: white;
-  background: #33bb77;
-  transform: translate(50%, 0%);
-`;
-const InsertFormPositioner = styled.div`
+const InsertFormPositioner = styled.section`
   width: 100%;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid ${({theme}) => theme.color.grayE};
 `;
 const InsertForm = styled.form`
   padding: 36px 60px 36px 40px;
-  background: #eeeeee;
+  background: ${({theme}) => theme.color.grayE};
 `;
 const TargetDateWrap = styled.div`
   display: flex;
@@ -168,7 +158,7 @@ const Input = styled.input`
   width: 100%;
   font-size: 21px;
   box-sizing: border-box;
-  color: #119955;
+  color: ${({theme}) => theme.color.primary};
   transition: border 0.3s, box-shadow 0.3s;
   
   &:hover {
@@ -181,7 +171,19 @@ const Input = styled.input`
   }
   
   &::placeholder {
-    color: #dddddd;
+    color: ${({theme}) => theme.color.grayD};
     font-size: 16px;
   }
+`;
+const CircleButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 60px;
+  color: ${({theme}) => theme.color.white};
+  background: #33bb77;
+  transform: translate(50%, 0%);
 `;

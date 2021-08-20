@@ -13,6 +13,7 @@ interface TodoListProps {
 const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
   return (
     <TodoListBlock>
+	    <h2 className="a11y">Todo 목록</h2>
       {todos &&
       todos.map((todo) => (
         <TodoItem
@@ -28,7 +29,7 @@ const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
 
 export default React.memo(TodoList);
 
-const TodoListBlock = styled.div`
+const TodoListBlock = styled.section`
   flex: 1;
   padding: 20px 32px 48px;
   overflow-y: auto;

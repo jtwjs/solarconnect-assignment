@@ -11,8 +11,9 @@ const TodoFooter = ({ todos }: HooksTodoHeadProps) => {
   const undoneTasks = todos?.filter((todo) => !todo.done);
   return (
     <TodoFooterBlock>
-      <LeftText className="tasks-left">
-        {undoneTasks?.length} items left
+      <LeftText>
+        <Count>{undoneTasks?.length}</Count>
+	      items left
       </LeftText>
     </TodoFooterBlock>
   );
@@ -20,7 +21,7 @@ const TodoFooter = ({ todos }: HooksTodoHeadProps) => {
 
 export default React.memo(TodoFooter);
 
-const TodoFooterBlock = styled.div`
+const TodoFooterBlock = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,6 +30,9 @@ const TodoFooterBlock = styled.div`
   padding-bottom: 24px;
 `;
 const LeftText = styled.div`
-  color: #33bb77;
+  color: ${({theme}) => theme.color.secondary};
   font-size: 18px;
 `;
+const Count = styled.strong`
+	margin-right: 5px;
+`
