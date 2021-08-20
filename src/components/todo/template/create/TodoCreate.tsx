@@ -4,7 +4,7 @@ import { Moment, now } from 'moment';
 import { DatePicker, Modal } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
-import { Itodo } from "components/todo/TodoService";
+import { Itodo } from "utils/hooks/useTodo";
 
 interface TodoCreateProps {
   createTodo: (todo: Itodo) => void;
