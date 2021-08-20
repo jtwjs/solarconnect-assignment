@@ -8,6 +8,9 @@ declare module "styled-components" {
       black: string;
       white: string;
       gray: string;
-    }
+    },
+	  boxShadow: {
+    	input: string
+	  }
   }
 }
