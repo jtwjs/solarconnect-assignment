@@ -8,9 +8,16 @@ export type Itodo = {
   done: boolean;
 };
 
+interface IuseTodo {
+    todoList: Itodo[],
+    toggleTodo: (id: number) => void,
+    removeTodo: (id: number) => void,
+    createTodo: (todo: Itodo) => void,
+};
+
 let initialTodos: Itodo[] = [];
 
-export const useTodo = () => {
+export const useTodo = (): IuseTodo => {
   const [todoList, setTodoList] = useState<Itodo[]>(initialTodos);
 
   useEffect(() => {
