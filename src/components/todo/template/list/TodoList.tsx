@@ -13,7 +13,7 @@ interface TodoListProps {
 const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
   return (
     <TodoListBlock>
-	    <h2 className="a11y">Todo 목록</h2>
+      <h2 className="a11y">Todo 목록</h2>
       {todos &&
       todos.map((todo) => (
         <TodoItem
@@ -33,8 +33,8 @@ const TodoListBlock = styled.section`
   flex: 1;
   padding: 20px 32px 48px;
   overflow-y: auto;
-	
-	@media screen and ${({theme}) => theme.device.mobile} {
-	  padding: 10px 16px 24px;
-	}
+  
+  @media screen and ${({theme}) => theme.device.mobile} {
+    padding: 10px 16px 24px;
+  }
 `;

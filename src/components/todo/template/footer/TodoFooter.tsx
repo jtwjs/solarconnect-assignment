@@ -13,7 +13,7 @@ const TodoFooter = ({ todos }: HooksTodoHeadProps) => {
     <TodoFooterBlock>
       <LeftText>
         <Count>{undoneTasks?.length}</Count>
-	      items left
+        items left
       </LeftText>
     </TodoFooterBlock>
   );
@@ -26,10 +26,10 @@ const TodoFooterBlock = styled.footer`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-	padding: 24px 0;
-	
-	@media screen and ${({theme}) => theme.device.mobile} {
-	  padding: 16px 0;	
+  padding: 24px 0;
+  
+  @media screen and ${({theme}) => theme.device.mobile} {
+    padding: 16px 0;	
   }
 `;
 const LeftText = styled.div`
@@ -37,5 +37,5 @@ const LeftText = styled.div`
   font-size: 18px;
 `;
 const Count = styled.strong`
-	margin-right: 5px;
+  margin-right: 5px;
 `

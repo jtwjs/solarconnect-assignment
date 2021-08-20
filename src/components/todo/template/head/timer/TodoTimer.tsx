@@ -53,17 +53,17 @@ const DayText = styled.span`
   padding-right: 10px;
   font-size: 22px;
   color: ${({theme}) => theme.color.primary};
-	
-	@media screen and ${({theme}) => theme.device.mobile} {
-	  font-size: 16px;	
+  
+  @media screen and ${({theme}) => theme.device.mobile} {
+    font-size: 16px;	
   }
 `;
 const DateText = styled.span`
   font-size: 26px;
   color: ${({theme}) => theme.color.primary};
-	
-	@media screen and ${({theme}) => theme.device.mobile} {
-	  font-size: 20px;	
+  
+  @media screen and ${({theme}) => theme.device.mobile} {
+    font-size: 20px;	
   }
 `;
 

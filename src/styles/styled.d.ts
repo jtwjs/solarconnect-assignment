@@ -11,12 +11,12 @@ declare module "styled-components" {
       grayD: string;
       grayE: string;
     },
-	  boxShadow: {
-    	input: string;
-    	section: string;
-	  },
-	  device: {
-    	mobile: string;
-	  }
+    boxShadow: {
+      input: string;
+      section: string;
+    },
+    device: {
+      mobile: string;
+    }
   }
 }

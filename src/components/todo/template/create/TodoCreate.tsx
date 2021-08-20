@@ -71,7 +71,7 @@ const TodoCreate = ({createTodo}: TodoCreateProps) => {
   return (
     <>
       <InsertFormPositioner>
-	      <h2 className="a11y">Todo 입력 폼</h2>
+        <h2 className="a11y">Todo 입력 폼</h2>
         <InsertForm onSubmit={handleSubmit}>
           <TargetDateWrap>
             <StyledLabel htmlFor="date-picker">완료 목표일: </StyledLabel>
@@ -115,10 +115,10 @@ const InsertFormPositioner = styled.section`
 const InsertForm = styled.form`
   padding: 36px 60px 36px 40px;
   background: ${({theme}) => theme.color.grayE};
-	
-	@media screen and ${({theme}) => theme.device.mobile} {
-	  padding: 18px 30px 18px 20px;	
-	}
+  
+  @media screen and ${({theme}) => theme.device.mobile} {
+    padding: 18px 30px 18px 20px;	
+  }
 `;
 const TargetDateWrap = styled.div`
   display: flex;
@@ -131,10 +131,10 @@ const StyledLabel = styled.label`
   font-weight: 700;
   line-height: 1.58;
   color: ${({theme}) => theme.color.secondary};
-	
-	@media screen and ${({theme}) => theme.device.mobile} {
-	  font-size: 12px;	
-	}
+  
+  @media screen and ${({theme}) => theme.device.mobile} {
+    font-size: 12px;	
+  }
 `;
 const StyledDatePicker = styled(DatePicker)`
   &:hover {
@@ -182,11 +182,11 @@ const Input = styled.input`
     color: ${({theme}) => theme.color.grayD};
     font-size: 16px;
   }
-	
-	@media screen and ${({theme}) => theme.device.mobile} {  
-		padding: 6px;	
-		font-size: 16px;
-	}
+  
+  @media screen and ${({theme}) => theme.device.mobile} {  
+    padding: 6px;	
+    font-size: 16px;
+  }
 `;
 const CircleButton = styled.button`
   display: flex;
@@ -199,11 +199,11 @@ const CircleButton = styled.button`
   color: ${({theme}) => theme.color.white};
   background: #33bb77;
   transform: translate(50%, 0%);
-	
-	@media screen and ${({theme}) => theme.device.mobile} {
-	  width: 25px;
-		height: 25px;
-		font-size: 30px;
-		transform: translate(50%, 25%);
-	}
+  
+  @media screen and ${({theme}) => theme.device.mobile} {
+    width: 25px;
+    height: 25px;
+    font-size: 30px;
+    transform: translate(50%, 25%);
+  }
 `;
