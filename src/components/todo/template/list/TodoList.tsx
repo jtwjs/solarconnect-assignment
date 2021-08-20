@@ -33,4 +33,8 @@ const TodoListBlock = styled.section`
   flex: 1;
   padding: 20px 32px 48px;
   overflow-y: auto;
+	
+	@media screen and ${({theme}) => theme.device.mobile} {
+	  padding: 10px 16px 24px;
+	}
 `;

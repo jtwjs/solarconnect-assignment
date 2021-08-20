@@ -33,7 +33,7 @@ export default function TodoTimer() {
 const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   height: 100%;
 `;
@@ -53,10 +53,18 @@ const DayText = styled.span`
   padding-right: 10px;
   font-size: 22px;
   color: ${({theme}) => theme.color.primary};
+	
+	@media screen and ${({theme}) => theme.device.mobile} {
+	  font-size: 16px;	
+  }
 `;
 const DateText = styled.span`
   font-size: 26px;
   color: ${({theme}) => theme.color.primary};
+	
+	@media screen and ${({theme}) => theme.device.mobile} {
+	  font-size: 20px;	
+  }
 `;
 
 

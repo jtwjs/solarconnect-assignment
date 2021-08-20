@@ -26,8 +26,11 @@ const TodoFooterBlock = styled.footer`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-top: 24px;
-  padding-bottom: 24px;
+	padding: 24px 0;
+	
+	@media screen and ${({theme}) => theme.device.mobile} {
+	  padding: 16px 0;	
+  }
 `;
 const LeftText = styled.div`
   color: ${({theme}) => theme.color.secondary};

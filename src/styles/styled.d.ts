@@ -14,6 +14,9 @@ declare module "styled-components" {
 	  boxShadow: {
     	input: string;
     	section: string;
+	  },
+	  device: {
+    	mobile: string;
 	  }
   }
 }

@@ -14,6 +14,9 @@ const theme: DefaultTheme = {
 	boxShadow: {
   	input: "0 0 0 2px rgb(17 153 85 / 20%)",
 		section: "0 0 50px 0 rgba(0, 0, 0, 0.1)",
+	},
+	device: {
+  	mobile: `(max-width: 768px)`,
 	}
 };
 

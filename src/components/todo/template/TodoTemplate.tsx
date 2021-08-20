@@ -27,7 +27,7 @@ const TodoTemplateBlock = styled.main`
 `;
 const Container = styled.article`
 	width: 70%;
-  min-width: 360px;
+  min-width: 300px;
   max-width: 700px;
   margin: 0 auto;
   border-radius: 30px;
