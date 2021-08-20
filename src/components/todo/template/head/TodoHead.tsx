@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import TodoTimer from 'components/todo/template/timer/TodoTimer';
+import TodoTimer from 'components/todo/template/head/timer/TodoTimer';
 
 const TodoHead = () => {
   return (
