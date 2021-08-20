@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 export type Itodo = {
   id: number;
   text: string;
+  targetDate: string;
   done: boolean;
 };
 
@@ -53,7 +54,9 @@ export const useTodo = () => {
   const loadData = () => {
     let data = localStorage.getItem("todos");
     if (data === undefined) data = "";
+    console.log('1', data);
     initialTodos = JSON.parse(data!);
+    console.log('2', initialTodos);
     if (initialTodos && initialTodos.length >= 1) {
       incrementNextId();
     }

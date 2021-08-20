@@ -1,7 +1,8 @@
-import { CheckOutlined, DeleteOutlined } from "@ant-design/icons";
-import { Itodo } from "components/todo/TodoService";
 import React from "react";
 import styled, { css } from "styled-components";
+import { CheckOutlined, DeleteOutlined } from "@ant-design/icons";
+
+import { Itodo } from "components/todo/TodoService";
 
 interface TodoItemProps {
   toggleTodo: (id: number) => void;
@@ -10,7 +11,7 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
-  const {id, text, done} = todo;
+  const {id, text, targetDate, done} = todo;
   const handleToggle = () => {
     toggleTodo(id);
   };
@@ -25,6 +26,10 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
         {done && <CheckOutlined />}
       </CheckCircle>
       <Text done={done}>{text}</Text>
+      <TargetDateWrap done={done}>
+        목표일:
+        <TargetDate >{targetDate}</TargetDate>
+      </TargetDateWrap>
       <Remove onClick={handleRemove}>
         <DeleteOutlined />
       </Remove>
@@ -38,7 +43,7 @@ const Remove = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #119955;
+  color: ${({theme}) => theme.color.primary};
   font-size: 16px;
 `;
 const TodoItemBlock = styled.div`
@@ -56,7 +61,7 @@ const CheckCircle = styled.div<{ done: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 16px;
-  border: 1px solid #33bb77;
+  border: 1px solid ${({theme}) => theme.color.secondary};
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -66,18 +71,28 @@ const CheckCircle = styled.div<{ done: boolean }>`
   ${(props) =>
   props.done &&
   css`
-      border: 1px solid #dddddd;
-      color: #dddddd;
+      border: 1px solid ${({theme}) => theme.color.gray};
+      color: ${({theme}) => theme.color.gray};
     `}
+`;
+const doneTextMixin = css`
+  color: #ced4da;
+  text-decoration: line-through;
 `;
 const Text = styled.div<{ done: boolean }>`
   flex: 1;
   font-size: 16px;
-  color: #119955;
-  ${(props) =>
-  props.done &&
-  css`
-      color: #ced4da;
-      text-decoration: line-through;
-    `}
+  color: ${({theme}) => theme.color.primary};
+  ${({done}) => done && doneTextMixin }
+`;
+const TargetDateWrap = styled.div<{ done: boolean}>`
+  display: flex;
+  margin-right: 10px;
+  color: ${({theme}) => theme.color.primary};
+  ${({done}) => done && doneTextMixin }
+`;
+const TargetDate = styled.time`
+  display: block;
+  margin-left: 5px;
+  font-weight: 700;
 `;

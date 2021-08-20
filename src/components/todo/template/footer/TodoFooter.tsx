@@ -20,15 +20,15 @@ interface HooksTodoHeadProps {
   todos: Itodo[];
 }
 
-const Todofooter = ({ todos }: HooksTodoHeadProps) => {
-  const undoneTasks = todos.filter((todo) => !todo.done);
+const TodoFooter = ({ todos }: HooksTodoHeadProps) => {
+  const undoneTasks = todos?.filter((todo) => !todo.done);
   return (
     <TodoFooterBlock>
       <LeftText className="tasks-left">
-        {undoneTasks.length} items left
+        {undoneTasks?.length} items left
       </LeftText>
     </TodoFooterBlock>
   );
 };
 
-export default React.memo(Todofooter);
+export default React.memo(TodoFooter);
