@@ -1,22 +1,16 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { Moment } from 'moment';
+import { Moment, now } from 'moment';
 import { DatePicker, Modal } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 import { Itodo } from "components/todo/TodoService";
 
 interface TodoCreateProps {
-  nextId: number;
   createTodo: (todo: Itodo) => void;
-  incrementNextId: () => void;
 }
 
-const TodoCreate = ({
-                      nextId,
-                      createTodo,
-                      incrementNextId
-                    }: TodoCreateProps) => {
+const TodoCreate = ({createTodo}: TodoCreateProps) => {
   const [value, setValue] = useState<string>("");
   const [isOpenDataPicker, setIsOpenDataPicker] = useState<boolean>(false);
   const [dateValue, setDateValue] = useState<Moment | null>(null);
@@ -40,20 +34,18 @@ const TodoCreate = ({
     }
 
     createTodo({
-      id: nextId,
+      id: now(),
       text: value,
       targetDate: dateValue!.format('MM/DD'),
       done: false
     });
-    incrementNextId(); // nextId 하나 증가
 
     setDateValue(null);
     setValue("");
   };
 
-  const handleDatePicker = (date: Moment | null, dateString: string): void => {
+  const handleDatePicker = (date: Moment | null): void => {
     setDateValue(date);
-    console.log(date, dateString);
     closeDatePicker();
   }
   const openDatePicker = (): void => {
@@ -115,32 +107,24 @@ const TodoCreate = ({
 export default React.memo(TodoCreate);
 
 const CircleButton = styled.button`
-  background: #33bb77;
-  width: 50px;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  left: 50%;
-  transform: translate(50%, 0%);
-  color: white;
-  border-radius: 50%;
-  border: none;
-  outline: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 60px;
+  color: white;
+  background: #33bb77;
+  transform: translate(50%, 0%);
 `;
 const InsertFormPositioner = styled.div`
   width: 100%;
   border-bottom: 1px solid #eeeeee;
 `;
 const InsertForm = styled.form`
+  padding: 36px 60px 36px 40px;
   background: #eeeeee;
-  padding-left: 40px;
-  padding-top: 36px;
-  padding-right: 60px;
-  padding-bottom: 36px;
 `;
 const TargetDateWrap = styled.div`
   display: flex;
@@ -168,10 +152,10 @@ const StyledDatePicker = styled(DatePicker)`
     input {
       font-weight: 700;
       color: ${({theme}) => theme.color.secondary};
-	    
-	    &::placeholder {
-		    font-weight: 400;
-	    }
+      
+      &::placeholder {
+        font-weight: 400;
+      }
     }
   }
 `;
@@ -182,11 +166,10 @@ const Input = styled.input`
   padding: 12px;
   border: 1px solid #dddddd;
   width: 100%;
-  outline: none;
   font-size: 21px;
   box-sizing: border-box;
   color: #119955;
-	transition: border 0.3s, box-shadow 0.3s;
+  transition: border 0.3s, box-shadow 0.3s;
   
   &:hover {
     border-color: ${({theme}) => theme.color.primary};

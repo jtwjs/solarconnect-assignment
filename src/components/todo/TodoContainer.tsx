@@ -7,9 +7,7 @@ import TodoFooter from "components/todo/template/footer/TodoFooter";
 
 const TodoContainer = () => {
   const {
-    todoState,
-    nextIdState,
-    incrementNextId,
+    todoList,
     toggleTodo,
     removeTodo,
     createTodo,
@@ -19,17 +17,13 @@ const TodoContainer = () => {
     <>
       <TodoTemplate>
         <TodoHead />
-        <TodoCreate
-          nextId={nextIdState}
-          createTodo={createTodo}
-          incrementNextId={incrementNextId}
-        />
+        <TodoCreate createTodo={createTodo}/>
         <TodoList
           toggleTodo={toggleTodo}
           removeTodo={removeTodo}
-          todos={todoState}
+          todos={todoList}
         />
-        <TodoFooter todos={todoState} />
+        <TodoFooter todos={todoList} />
       </TodoTemplate>
     </>
   );

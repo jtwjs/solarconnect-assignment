@@ -11,8 +11,7 @@ export type Itodo = {
 let initialTodos: Itodo[] = [];
 
 export const useTodo = () => {
-  const [todoState, setTodoState] = useState(initialTodos);
-  var nextIdState = 0;
+  const [todoList, setTodoList] = useState<Itodo[]>(initialTodos);
 
   useEffect(() => {
     loadData();
@@ -20,57 +19,43 @@ export const useTodo = () => {
 
   useEffect(() => {
     saveData();
-  }, [todoState]);
-
-  const incrementNextId = () => {
-    nextIdState = nextIdState + 1;
-  };
+  }, [todoList]);
 
   const toggleTodo = (id: number) => {
-    const newTodoState = todoState.map(todo => {
+    const newTodoState = todoList.map(todo => {
       todo.id === id && (todo.done = !todo.done);
 
       return todo;
     })
-    setTodoState(newTodoState);
+    setTodoList(newTodoState);
   };
 
   const removeTodo = (id: number) => {
-    setTodoState((prevState) =>
-      prevState.filter((todo: Itodo) => todo.id === id)
+    setTodoList((prevState) =>
+      prevState.filter((todo: Itodo) => todo.id !== id)
     );
   };
 
   const createTodo = (todo: Itodo) => {
-    const nextId = todoState.length + 1;
-    setTodoState((prevState) =>
-      prevState.concat({
-        ...todo,
-        id: nextId
-      })
-    );
+    setTodoList([...todoList, todo]);
   };
 
   const loadData = () => {
-    let data = localStorage.getItem("todos");
-    if (data === undefined) data = "";
-    console.log('1', data);
-    initialTodos = JSON.parse(data!);
-    console.log('2', initialTodos);
-    if (initialTodos && initialTodos.length >= 1) {
-      incrementNextId();
+    const data = localStorage.getItem("todos");
+    if (data == undefined) {
+      saveData();
+      return;
     }
-    setTodoState(initialTodos);
+    initialTodos = JSON.parse(data);
+    setTodoList(initialTodos);
   };
 
   const saveData = () => {
-    localStorage.setItem("todos", JSON.stringify(todoState));
+    localStorage.setItem("todos", JSON.stringify(todoList));
   };
 
   return {
-    todoState,
-    nextIdState,
-    incrementNextId,
+    todoList,
     toggleTodo,
     removeTodo,
     createTodo
