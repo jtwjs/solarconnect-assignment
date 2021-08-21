@@ -5,7 +5,12 @@ import TodoList from "components/todo/template/list/TodoList";
 import TodoCreate from "components/todo/template/create/TodoCreate";
 import TodoFooter from "components/todo/template/footer/TodoFooter";
 
-const TodoContainer = () => {
+type TodoContainerProps = {
+  isDarkMode: boolean,
+  toggleDarkTheme: () => void,
+}
+
+const TodoContainer = ({isDarkMode, toggleDarkTheme}: TodoContainerProps): JSX.Element => {
   const {
     todoList,
     toggleTodo,
@@ -15,7 +20,10 @@ const TodoContainer = () => {
 
   return (
     <>
-      <TodoTemplate>
+      <TodoTemplate
+        isDarkMode={isDarkMode}
+        toggleDarkTheme={toggleDarkTheme}
+      >
         <TodoHead />
         <TodoCreate createTodo={createTodo}/>
         <TodoList

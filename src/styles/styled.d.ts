@@ -2,14 +2,14 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    color: {
+    colors: {
       primary: string;
       secondary: string;
-      black: string;
-      white: string;
       grayC: string;
       grayD: string;
-      grayE: string;
+      bgOuter: string;
+      bgInner: string;
+      bgInput: string;
     },
     boxShadow: {
       input: string;

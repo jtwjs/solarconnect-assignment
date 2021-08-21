@@ -10,7 +10,7 @@ interface TodoListProps {
   removeTodo: (id: number) => void;
 }
 
-const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
+const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps): JSX.Element => {
   return (
     <TodoListBlock>
       <h2 className="a11y">Todo 목록</h2>
@@ -20,7 +20,10 @@ const TodoList = ({ toggleTodo, removeTodo, todos }: TodoListProps) => {
           toggleTodo={toggleTodo}
           removeTodo={removeTodo}
           key={todo.id}
-          todo={todo}
+          id={todo.id}
+          text={todo.text}
+          targetDate={todo.targetDate}
+          done={todo.done}
         />
       ))}
     </TodoListBlock>

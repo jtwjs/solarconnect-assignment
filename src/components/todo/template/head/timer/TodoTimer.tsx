@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import timer from 'utils/timer';
 
-export default function TodoTimer() {
+export default function TodoTimer(): JSX.Element {
   const [currentTime, setCurrentTime] = useState<string>('');
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Timer = styled.time`
   min-height: 50px;
   font-size: 50px;
   font-weight: 700;
-  color: ${({theme}) => theme.color.primary};
+  color: ${({theme}) => theme.colors.primary};
 `;
 const Today = styled.time`
   display: flex;
@@ -52,7 +52,7 @@ const DayText = styled.span`
   margin-top: 3px;
   padding-right: 10px;
   font-size: 22px;
-  color: ${({theme}) => theme.color.primary};
+  color: ${({theme}) => theme.colors.primary};
   
   @media screen and ${({theme}) => theme.device.mobile} {
     font-size: 16px;	
@@ -60,7 +60,7 @@ const DayText = styled.span`
 `;
 const DateText = styled.span`
   font-size: 26px;
-  color: ${({theme}) => theme.color.primary};
+  color: ${({theme}) => theme.colors.primary};
   
   @media screen and ${({theme}) => theme.device.mobile} {
     font-size: 20px;	

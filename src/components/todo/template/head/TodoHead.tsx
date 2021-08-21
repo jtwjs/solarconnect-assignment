@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import TodoTimer from 'components/todo/template/head/timer/TodoTimer';
 
-const TodoHead = () => {
+const TodoHead = (): JSX.Element => {
   return (
     <TodoHeadBlock>
       <TodoTimer/>
@@ -18,5 +18,5 @@ const TodoHeadBlock = styled.header`
   align-items: center;
   justify-content: center;
   height: 135px;
-  border-bottom: 3px solid ${({theme}) => theme.color.secondary};
+  border-bottom: 3px solid ${({theme}) => theme.colors.secondary};
 `;

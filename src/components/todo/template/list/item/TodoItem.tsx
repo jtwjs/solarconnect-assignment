@@ -1,17 +1,19 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { CheckOutlined, DeleteOutlined } from "@ant-design/icons";
+import styled, {css} from "styled-components";
+import {CheckOutlined, DeleteOutlined} from "@ant-design/icons";
 
-import { Itodo } from "utils/hooks/useTodo";
+import {Itodo} from "utils/hooks/useTodo";
 
 interface TodoItemProps {
   toggleTodo: (id: number) => void;
   removeTodo: (id: number) => void;
-  todo: Itodo;
+  id: Itodo['id'],
+  text: Itodo['text'],
+  targetDate: Itodo['targetDate'],
+  done: Itodo['done']
 }
 
-const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
-  const {id, text, targetDate, done} = todo;
+const TodoItem = ({toggleTodo, removeTodo, id, text, targetDate, done}: TodoItemProps): JSX.Element => {
   const handleToggle = () => {
     toggleTodo(id);
   };
@@ -28,20 +30,20 @@ const TodoItem = ({ toggleTodo, removeTodo, todo }: TodoItemProps) => {
         onClick={handleToggle}
         aria-label="완료 버튼"
       >
-        {done && <CheckOutlined />}
+        {done && <CheckOutlined/>}
       </CheckCircle>
       <Text done={done}>{text}</Text>
       <TargetDateWrap done={done}>
         <TargetDateTitle>목표일:</TargetDateTitle>
         <TargetDateDesc>
-          <TargetDate >{targetDate}</TargetDate>
+          <TargetDate>{targetDate}</TargetDate>
         </TargetDateDesc>
       </TargetDateWrap>
       <Remove
         type="button"
         onClick={handleRemove}
       >
-        <DeleteOutlined />
+        <DeleteOutlined/>
       </Remove>
     </TodoItemBlock>
   );
@@ -53,14 +55,21 @@ const Remove = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({theme}) => theme.color.primary};
+  color: ${({theme}) => theme.colors.primary};
   font-size: 16px;
+  transition: transform .3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
 `;
 const TodoItemBlock = styled.article`
   display: flex;
   align-items: center;
   padding-top: 12px;
   padding-bottom: 12px;
+
   &:hover {
     ${Remove} {
       display: initial;
@@ -75,35 +84,40 @@ const CheckCircle = styled.button<{ done: boolean }>`
   height: 20px;
   margin-right: 20px;
   border-radius: 16px;
-  border: 1px solid ${({theme}) => theme.color.secondary};
+  border: 1px solid ${({theme}) => theme.colors.secondary};
+  transition: transform 0.3s ease-in-out;
+
   ${(props) =>
-  props.done &&
-  css`
-      border: 1px solid ${({theme}) => theme.color.grayD};
-      color: ${({theme}) => theme.color.grayD};
-    `}
-  
+          props.done &&
+          css`
+            border: 1px solid ${({theme}) => theme.colors.grayD};
+            color: ${({theme}) => theme.colors.grayD};
+          `}
+  &:hover {
+    transform: scale(1.2);
+  }
+
   @media screen and ${({theme}) => theme.device.mobile} {
-    margin-right: 10px;  
+    margin-right: 10px;
   }
 `;
 const doneTextMixin = css`
-  color: ${({theme}) => theme.color.grayC};
+  color: ${({theme}) => theme.colors.grayC};
   text-decoration: line-through;
 `;
 const Text = styled.h3<{ done: boolean }>`
   flex: 1;
   font-size: 16px;
-  color: ${({theme}) => theme.color.primary};
+  color: ${({theme}) => theme.colors.primary};
   text-overflow: ellipsis;
   overflow: hidden;
-  ${({done}) => done && doneTextMixin }
+  ${({done}) => done && doneTextMixin}
 `;
-const TargetDateWrap = styled.dl<{ done: boolean}>`
+const TargetDateWrap = styled.dl<{ done: boolean }>`
   display: flex;
   margin-right: 10px;
-  color: ${({theme}) => theme.color.primary};
-  ${({done}) => done && doneTextMixin }
+  color: ${({theme}) => theme.colors.primary};
+  ${({done}) => done && doneTextMixin}
 `;
 const TargetDateTitle = styled.dt`
   margin-right: 5px;

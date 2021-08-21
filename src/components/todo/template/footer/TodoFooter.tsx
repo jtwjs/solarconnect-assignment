@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import { Itodo } from "utils/hooks/useTodo";
 
-interface HooksTodoHeadProps {
+type HooksTodoHeadProps = {
   todos: Itodo[];
 }
 
-const TodoFooter = ({ todos }: HooksTodoHeadProps) => {
+const TodoFooter = ({ todos }: HooksTodoHeadProps): JSX.Element => {
   const undoneTasks = todos?.filter((todo) => !todo.done);
   return (
     <TodoFooterBlock>
@@ -33,7 +33,7 @@ const TodoFooterBlock = styled.footer`
   }
 `;
 const LeftText = styled.div`
-  color: ${({theme}) => theme.color.secondary};
+  color: ${({theme}) => theme.colors.secondary};
   font-size: 18px;
 `;
 const Count = styled.strong`

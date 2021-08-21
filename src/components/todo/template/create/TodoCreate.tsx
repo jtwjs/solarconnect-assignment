@@ -6,11 +6,11 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 
 import { Itodo } from "utils/hooks/useTodo";
 
-interface TodoCreateProps {
+type TodoCreateProps = {
   createTodo: (todo: Itodo) => void;
 }
 
-const TodoCreate = ({createTodo}: TodoCreateProps) => {
+const TodoCreate = ({createTodo}: TodoCreateProps): JSX.Element => {
   const [value, setValue] = useState<string>("");
   const [isOpenDataPicker, setIsOpenDataPicker] = useState<boolean>(false);
   const [dateValue, setDateValue] = useState<Moment | null>(null);
@@ -110,14 +110,14 @@ export default React.memo(TodoCreate);
 
 const InsertFormPositioner = styled.section`
   width: 100%;
-  border-bottom: 1px solid ${({theme}) => theme.color.grayE};
+  border-bottom: 1px solid ${({theme}) => theme.colors.bgOuter};
 `;
 const InsertForm = styled.form`
   padding: 36px 60px 36px 40px;
-  background: ${({theme}) => theme.color.grayE};
+  background: ${({theme}) => theme.colors.bgOuter};
   
   @media screen and ${({theme}) => theme.device.mobile} {
-    padding: 18px 30px 18px 20px;	
+    padding: 18px 24px 18px 16px;	
   }
 `;
 const TargetDateWrap = styled.div`
@@ -130,26 +130,27 @@ const StyledLabel = styled.label`
   font-size: 20px;
   font-weight: 700;
   line-height: 1.58;
-  color: ${({theme}) => theme.color.secondary};
+  color: ${({theme}) => theme.colors.secondary};
   
   @media screen and ${({theme}) => theme.device.mobile} {
     font-size: 12px;	
   }
 `;
 const StyledDatePicker = styled(DatePicker)`
+  background-color: ${({theme}) => theme.colors.bgInput};
   &:hover {
-    border-color: ${({theme}) => theme.color.primary};
+    border-color: ${({theme}) => theme.colors.primary};
   }
   
   &.ant-picker-focused {
-    border-color: ${({theme}) => theme.color.primary};
+    border-color: ${({theme}) => theme.colors.primary};
     box-shadow: ${({theme}) => theme.boxShadow.input};
   }
   
   .ant-picker-input {
     input {
       font-weight: 700;
-      color: ${({theme}) => theme.color.secondary};
+      color: ${({theme}) => theme.colors.secondary};
       
       &::placeholder {
         font-weight: 400;
@@ -166,20 +167,21 @@ const Input = styled.input`
   width: 100%;
   font-size: 21px;
   box-sizing: border-box;
-  color: ${({theme}) => theme.color.primary};
-  transition: border 0.3s, box-shadow 0.3s;
+  color: ${({theme}) => theme.colors.primary};
+  background-color: ${({theme}) => theme.colors.bgInput};
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   
   &:hover {
-    border-color: ${({theme}) => theme.color.primary};
+    border-color: ${({theme}) => theme.colors.primary};
   }
   
   &:focus {
-    border-color: ${({theme}) => theme.color.primary};
+    border-color: ${({theme}) => theme.colors.primary};
     box-shadow: ${({theme}) => theme.boxShadow.input};
   }
   
   &::placeholder {
-    color: ${({theme}) => theme.color.grayD};
+    color: ${({theme}) => theme.colors.grayC};
     font-size: 16px;
   }
   
@@ -196,9 +198,14 @@ const CircleButton = styled.button`
   height: 50px;
   border-radius: 50%;
   font-size: 60px;
-  color: ${({theme}) => theme.color.white};
-  background: #33bb77;
+  color: ${({theme}) => theme.colors.bgInner};
+  background-color: ${({theme}) => theme.colors.primary};
   transform: translate(50%, 0%);
+  transition: background-color 0.3s ease-in-out;
+  
+  &:hover {
+      background-color: ${({theme}) => theme.colors.secondary};
+    }
   
   @media screen and ${({theme}) => theme.device.mobile} {
     width: 25px;
