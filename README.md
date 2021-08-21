@@ -20,7 +20,11 @@
 - [Link](https://solarconnect-todolist.netlify.app/) 
 
 ## Screenshots
-![thumbnail](https://user-images.githubusercontent.com/60641307/130230602-5886da6b-7bb4-40e1-bb2c-16020d2e23aa.png)
+![과제2](https://user-images.githubusercontent.com/60641307/130313025-5299fa82-8ba0-45a9-91f8-d80e6c6ca85c.png)
+
+### Dark mode
+![과제1](https://user-images.githubusercontent.com/60641307/130313030-69762ffd-c835-4b77-8195-68c2710d382e.png)
+
 
 
 ## Available Commands
@@ -63,5 +67,6 @@ $ yarn start
 ## 🎯 Future Updates
 - [x] Timer
 - [x] Target Date
+- [x] Dark mode
 - [ ] Login
 
